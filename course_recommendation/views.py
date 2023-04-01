@@ -94,10 +94,10 @@ def prediction(skills):
         transformer_path = pkg_resources.resource_filename('course_recommendation', 'resources/transformer.sav')
         rec_model_path = pkg_resources.resource_filename('course_recommendation', 'resources/rec_model.sav')
 
-        with transformer_path.open("rb") as transformer_file:
+        with open(transformer_path, "rb") as transformer_file:
             transformer = pickle.load(transformer_file)
 
-        with rec_model_path.open("rb") as rec_model_file:
+        with open(rec_model_path, "rb") as rec_model_file:
             rec_model = pickle.load(rec_model_file)
 
         pred = []
