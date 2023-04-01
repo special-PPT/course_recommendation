@@ -1,1 +1,2 @@
 include course_recommendation/templates/course_recommendation/*
+recursive-include course_recommendation/resources *

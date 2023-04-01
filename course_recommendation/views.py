@@ -13,6 +13,7 @@ import pandas
 import docx2txt
 import nltk
 from pathlib import Path
+import pkg_resources
 
 class ResumeView(viewsets.ModelViewSet):
     queryset = Resume.objects.all()
@@ -87,9 +88,11 @@ def get_suggestions(resume):
 def prediction(skills):
     try:
 
-        current_dir = Path(__file__).resolve().parent
-        transformer_path = current_dir / "resources" / "transformer.sav"
-        rec_model_path = current_dir / "resources" / "rec_model.sav"
+        # current_dir = Path(__file__).resolve().parent
+        # transformer_path = current_dir / "resources" / "transformer.sav"
+        # rec_model_path = current_dir / "resources" / "rec_model.sav"
+        transformer_path = pkg_resources.resource_filename('course_recommendation', 'resources/transformer.sav')
+        rec_model_path = pkg_resources.resource_filename('course_recommendation', 'resources/rec_model.sav')
 
         with transformer_path.open("rb") as transformer_file:
             transformer = pickle.load(transformer_file)
