@@ -121,7 +121,7 @@ def ResumeFormView(request):
             result = prediction(content)
             courses = Courses.objects.filter(category = result[0]).values()[:5]
             serialized_item = CourseSerializer(courses, many=True)
-            return render(request, 'prediction.html', {"data":serialized_item.data})
+            return render(request, 'course_recommendation/prediction.html', {"data":serialized_item.data})
     
     form = ResumeUploadForm()
     return render(request, 'course_recommendation/resume_upload.html', {"form":form})
